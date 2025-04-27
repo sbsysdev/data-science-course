@@ -1,0 +1,14 @@
+{
+  "name": "Data Science Course",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "customizations": {
+    "vscode": {}
+  },
+  "forwardPorts": [8888],
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,readonly,type=bind"
+  ],
+  "postCreateCommand": "git config --global --add safe.directory /workspaces/data-science-course && nohup bash -c 'jupyter notebook --ip=0.0.0.0 --port=8888 --allow-root &'"
+}
